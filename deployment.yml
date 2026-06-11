@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smart-tracker-deployment
+  labels:
+    app: smart-tracker
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: smart-tracker
+
+  template:
+    metadata:
+      labels:
+        app: smart-tracker
+
+    spec:
+      containers:
+      - name: smart-tracker-container
+        image: smart-tracker-image
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
